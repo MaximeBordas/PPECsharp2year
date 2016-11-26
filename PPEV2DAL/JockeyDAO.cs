@@ -66,7 +66,7 @@ namespace PPEV2DAL
                 string jockCiv = (string)MaConnectionSql.MonLecteur["joc_civilite"];
                 unJockey = new Jockey(jockId, jockNom, jockPrenom, jockAge, jockCiv);
             }
-            
+            MaConnectionSql.MonLecteur.Close();
             MaConnectionSql.CloseConnection();
             return unJockey;
         }

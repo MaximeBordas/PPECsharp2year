@@ -46,16 +46,21 @@ namespace PPEV2DAL
         // C'est VIIIIIINCE qui m'a donné cette méthode. Va falloir la tester (voir CHEVAL DAO création de l'objet cheval a partir de la BDD)
         public static Hippodrome GetUnHippodrome(int id)
         {
+            Hippodrome unHip = null;
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
             string stringSql = "select * from hippodrome where hip_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql;
-            MaConnectionSql.Cmd.ExecuteReader();
-            int hipId = (int)MaConnectionSql.MonLecteur["hip_id"];
-            string hipNom = (string)MaConnectionSql.MonLecteur["hip_nom"];
-            string hipLieu = (string)MaConnectionSql.MonLecteur["hip_lieu"];
-            Hippodrome unHip = new Hippodrome(hipId, hipNom, hipLieu);
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            if(MaConnectionSql.MonLecteur.Read())
+            {
+                int hipId = (int)MaConnectionSql.MonLecteur["hip_id"];
+                string hipNom = (string)MaConnectionSql.MonLecteur["hip_nom"];
+                string hipLieu = (string)MaConnectionSql.MonLecteur["hip_lieu"];
+                unHip = new Hippodrome(hipId, hipNom, hipLieu);
+            }
+            MaConnectionSql.MonLecteur.Close();
             MaConnectionSql.CloseConnection();
             return unHip;
         }

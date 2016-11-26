@@ -105,28 +105,33 @@ namespace PPEV2DAL
         }
         public static Cheval GetUnCheval(int id)
         {
+            Cheval unCheval = null;
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
             string stringSql2 = "select * from cheval where ch_id " + id;
             MaConnectionSql.Cmd.CommandText = stringSql2;
-            MaConnectionSql.Cmd.ExecuteReader();
-            // recuperation de valeurs
-            int chevalId = (int)MaConnectionSql.MonLecteur["ch_id"];
-            string chevalNom = (string)MaConnectionSql.MonLecteur["ch_nom"];
-            string chevalCouleur = (string)MaConnectionSql.MonLecteur["ch_couleur"];
-            int chevalAge = (int)MaConnectionSql.MonLecteur["ch_age"];
-            string chevalSpecialite = (string)MaConnectionSql.MonLecteur["ch_specialite"];
-            string chevalNomPere = (string)MaConnectionSql.MonLecteur["ch_nompere"];
-            string chevalNomMere = (string)MaConnectionSql.MonLecteur["ch_nommere"];
-            string chevalSexe = (string)MaConnectionSql.MonLecteur["ch_sexe"];
-            // c'est ici que ça deviens compliqué, bien lire les deux prochaines lignes plusieurs fois pour comprendre.
-            Entraineur chevalEnt = EntraineurDAO.GetUnEntraineur((int)MaConnectionSql.MonLecteur["ent_id"]);
-            Proprietaire chevalPro = ProprietaireDAO.GetUnProprietaire((int)MaConnectionSql.MonLecteur["pro_id"]);
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            if(MaConnectionSql.MonLecteur.Read())
+            {
+                // recuperation de valeurs
+                int chevalId = (int)MaConnectionSql.MonLecteur["ch_id"];
+                string chevalNom = (string)MaConnectionSql.MonLecteur["ch_nom"];
+                string chevalCouleur = (string)MaConnectionSql.MonLecteur["ch_couleur"];
+                int chevalAge = (int)MaConnectionSql.MonLecteur["ch_age"];
+                string chevalSpecialite = (string)MaConnectionSql.MonLecteur["ch_specialite"];
+                string chevalNomPere = (string)MaConnectionSql.MonLecteur["ch_nompere"];
+                string chevalNomMere = (string)MaConnectionSql.MonLecteur["ch_nommere"];
+                string chevalSexe = (string)MaConnectionSql.MonLecteur["ch_sexe"];
+                // c'est ici que ça deviens compliqué, bien lire les deux prochaines lignes plusieurs fois pour comprendre.
+                Entraineur chevalEnt = EntraineurDAO.GetUnEntraineur((int)MaConnectionSql.MonLecteur["ent_id"]);
+                Proprietaire chevalPro = ProprietaireDAO.GetUnProprietaire((int)MaConnectionSql.MonLecteur["pro_id"]);
 
-            // Et la bim, on crée l'objet cheval. ( Et y'a pas d'erreur wow )
-            Cheval unCheval = new Cheval(chevalId, chevalNom, chevalCouleur, chevalAge, chevalSpecialite, chevalNomPere, chevalNomMere, chevalSexe, chevalEnt, chevalPro);
-
+                // Et la bim, on crée l'objet cheval. ( Et y'a pas d'erreur wow )
+                 unCheval = new Cheval(chevalId, chevalNom, chevalCouleur, chevalAge, chevalSpecialite, chevalNomPere, chevalNomMere, chevalSexe, chevalEnt, chevalPro);
+            }
+            MaConnectionSql.MonLecteur.Close();
+            MaConnectionSql.CloseConnection();
             return unCheval;
         }
     }

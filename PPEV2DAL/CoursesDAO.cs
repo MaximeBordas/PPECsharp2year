@@ -97,27 +97,32 @@ namespace PPEV2DAL
         }
         public static Course GetUneCourse(int id)
         {
+            Course uneCourse = null;
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
             string stringSql2 = "select * from course where crs_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql2;
-            MaConnectionSql.Cmd.ExecuteReader();
-            // recuperation de valeurs
-            int crsId = (int)MaConnectionSql.MonLecteur["crs_id"];
-            string crsNom = (string)MaConnectionSql.MonLecteur["crs_nom"];
-            string crsLieu = (string)MaConnectionSql.MonLecteur["crs_lieu"];
-            int crsnbrsMax = (int)MaConnectionSql.MonLecteur["crs_nbrmax"];
-            int crsPrice = (int)MaConnectionSql.MonLecteur["crs_price"];
-            int crsFirst = (int)MaConnectionSql.MonLecteur["crs_first"];
-            int crsSecond = (int)MaConnectionSql.MonLecteur["crs_second"];
-            int crsThird = (int)MaConnectionSql.MonLecteur["crs_third"];
-            int crsFourth = (int)MaConnectionSql.MonLecteur["crs_fourth"];
-            int crsFifth = (int)MaConnectionSql.MonLecteur["crs_fifth"];
-            Hippodrome courseHip = HippodromeDAO.GetUnHippodrome((int)MaConnectionSql.MonLecteur["hip_id"]);
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            if(MaConnectionSql.MonLecteur.Read() == true)
+            {
+                // recuperation de valeurs
+                int crsId = (int)MaConnectionSql.MonLecteur["crs_id"];
+                string crsNom = (string)MaConnectionSql.MonLecteur["crs_nom"];
+                string crsLieu = (string)MaConnectionSql.MonLecteur["crs_lieu"];
+                int crsnbrsMax = (int)MaConnectionSql.MonLecteur["crs_nbrmax"];
+                int crsPrice = (int)MaConnectionSql.MonLecteur["crs_price"];
+                int crsFirst = (int)MaConnectionSql.MonLecteur["crs_first"];
+                int crsSecond = (int)MaConnectionSql.MonLecteur["crs_second"];
+                int crsThird = (int)MaConnectionSql.MonLecteur["crs_third"];
+                int crsFourth = (int)MaConnectionSql.MonLecteur["crs_fourth"];
+                int crsFifth = (int)MaConnectionSql.MonLecteur["crs_fifth"];
+                Hippodrome courseHip = HippodromeDAO.GetUnHippodrome((int)MaConnectionSql.MonLecteur["hip_id"]);
 
-            Course uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip);
-
+                 uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip);
+            }
+            MaConnectionSql.MonLecteur.Close();
+            MaConnectionSql.CloseConnection();
             return uneCourse;
         }
     }

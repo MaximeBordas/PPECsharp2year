@@ -63,17 +63,22 @@ namespace PPEV2DAL
         // C'est VIIIIIINCE qui m'a donné cette méthode. Va falloir la tester (voir CHEVAL DAO création de l'objet cheval a partir de la BDD)
         public static Proprietaire GetUnProprietaire(int id)
         {
+            Proprietaire unPro = null;
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
             string stringSql = "select * from proprietaire where pro_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql;
-            MaConnectionSql.Cmd.ExecuteReader();
-            int proId = (int)MaConnectionSql.MonLecteur["pro_id"];
-            string proNom = (string)MaConnectionSql.MonLecteur["pro_nom"];
-            string proPrenom = (string)MaConnectionSql.MonLecteur["pro_prenom"];
-            string proCivilite = (string)MaConnectionSql.MonLecteur["pro_civilite"];
-            Proprietaire unPro = new Proprietaire(proId, proNom, proPrenom, proCivilite);
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            if(MaConnectionSql.MonLecteur.Read() == true)
+            {
+                int proId = (int)MaConnectionSql.MonLecteur["pro_id"];
+                string proNom = (string)MaConnectionSql.MonLecteur["pro_nom"];
+                string proPrenom = (string)MaConnectionSql.MonLecteur["pro_prenom"];
+                string proCivilite = (string)MaConnectionSql.MonLecteur["pro_civilite"];
+                unPro = new Proprietaire(proId, proNom, proPrenom, proCivilite);
+            }
+            MaConnectionSql.MonLecteur.Close();
             MaConnectionSql.CloseConnection();
             return unPro;
         }

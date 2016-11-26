@@ -67,19 +67,24 @@ namespace PPEV2DAL
         // C'est VIIIIIINCE qui m'a donné cette méthode. Va falloir la tester (voir CHEVAL DAO création de l'objet cheval a partir de la BDD)
         public static Entraineur GetUnEntraineur(int id)
         {
+            Entraineur unEnt = null;
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
             string stringSql = "select * from entraineur where ent_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql;
-            MaConnectionSql.Cmd.ExecuteReader();
-            int entId = (int)MaConnectionSql.MonLecteur["ent_id"];
-            string entNom = (string)MaConnectionSql.MonLecteur["ent_nom"];
-            string entPrenom = (string)MaConnectionSql.MonLecteur["ent_prenom"];
-            int entAge = (int)MaConnectionSql.MonLecteur["ent_age"];
-            string entCivilite = (string)MaConnectionSql.MonLecteur["ent_civilite"];
-            string entLocalisation = (string)MaConnectionSql.MonLecteur["ent_localisation"];
-            Entraineur unEnt = new Entraineur(entId, entNom, entPrenom, entAge, entCivilite, entLocalisation);
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            if (MaConnectionSql.MonLecteur.Read() == true)
+            {
+                int entId = (int)MaConnectionSql.MonLecteur["ent_id"];
+                string entNom = (string)MaConnectionSql.MonLecteur["ent_nom"];
+                string entPrenom = (string)MaConnectionSql.MonLecteur["ent_prenom"];
+                int entAge = (int)MaConnectionSql.MonLecteur["ent_age"];
+                string entCivilite = (string)MaConnectionSql.MonLecteur["ent_civilite"];
+                string entLocalisation = (string)MaConnectionSql.MonLecteur["ent_localisation"];
+                unEnt = new Entraineur(entId, entNom, entPrenom, entAge, entCivilite, entLocalisation);
+            }
+            MaConnectionSql.MonLecteur.Close();
             MaConnectionSql.CloseConnection();
             return unEnt;
         }

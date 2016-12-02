@@ -25,19 +25,20 @@ namespace PPEV2BLL
         {
             return ProprietaireDAO.GetProprietaire();
         }
-        //crée un propriétaire
+        public static Proprietaire GetUnProprietaire(int id)
+        {
+            return ProprietaireDAO.GetUnProprietaire(id);
+        }
         public static int CreerProprietaire(string nom, string prenom, string civilite)
         {
             Proprietaire pro = new Proprietaire(nom, prenom, civilite);
             return ProprietaireDAO.AjoutProprietaire(pro);
         }
-        //modifie un propriétaire
         public static int ModifierProprietaire(string nom, string prenom, string civilite)
         {
             Proprietaire pro = new Proprietaire(nom, prenom, civilite);
             return ProprietaireDAO.UpdateProprietaire(pro);
         }
-        //supprime un proprietaire
         public static int SupprimerProprietaire(int id)
         {
             return ProprietaireDAO.DeleteProprietaire(id);

@@ -66,5 +66,8 @@ namespace PPEV2BO
             civilite = uneCivilite;
             localisation = uneLocalisation;
         }
+        public Entraineur()
+        {
+        }
     }
 }

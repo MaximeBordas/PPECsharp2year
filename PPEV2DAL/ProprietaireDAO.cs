@@ -70,7 +70,7 @@ namespace PPEV2DAL
             string stringSql = "select * from proprietaire where pro_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql;
             MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
-            if(MaConnectionSql.MonLecteur.Read() == true)
+            if(MaConnectionSql.MonLecteur.Read())
             {
                 int proId = (int)MaConnectionSql.MonLecteur["pro_id"];
                 string proNom = (string)MaConnectionSql.MonLecteur["pro_nom"];
@@ -78,7 +78,7 @@ namespace PPEV2DAL
                 string proCivilite = (string)MaConnectionSql.MonLecteur["pro_civilite"];
                 unPro = new Proprietaire(proId, proNom, proPrenom, proCivilite);
             }
-            MaConnectionSql.MonLecteur.Close();
+            
             MaConnectionSql.CloseConnection();
             return unPro;
         }

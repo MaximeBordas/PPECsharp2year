@@ -7,19 +7,12 @@ C:\Users\stour\OneDrive\C#\PPEV2\PPEV2DAL\bin\Debug\MySql.Data.xml
 C:\Users\stour\OneDrive\C#\PPEV2\PPEV2DAL\obj\Debug\PPEV2DAL.csprojResolveAssemblyReference.cache
 C:\Users\stour\OneDrive\C#\PPEV2\PPEV2DAL\obj\Debug\PPEV2DAL.dll
 C:\Users\stour\OneDrive\C#\PPEV2\PPEV2DAL\obj\Debug\PPEV2DAL.pdb
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\bin\Debug\PPEV2DAL.dll
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\bin\Debug\PPEV2DAL.pdb
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\bin\Debug\PPEV2BO.dll
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\bin\Debug\PPEV2BO.pdb
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\bin\Debug\MySql.Data.xml
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\obj\Debug\PPEV2DAL.csprojResolveAssemblyReference.cache
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\obj\Debug\PPEV2DAL.dll
-C:\Users\Unicorn\Desktop\PPEV3\PPEV2\PPEV2DAL\obj\Debug\PPEV2DAL.pdb
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\bin\Debug\PPEV2DAL.dll
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\bin\Debug\PPEV2DAL.pdb
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\bin\Debug\PPEV2BO.dll
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\bin\Debug\PPEV2BO.pdb
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\bin\Debug\MySql.Data.xml
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\obj\Debug\PPEV2DAL.csprojResolveAssemblyReference.cache
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\obj\Debug\PPEV2DAL.dll
-C:\Users\Maxime\Desktop\projets 2eme année\Csharp\PPEV3\PPECsharp2year\PPEV2DAL\obj\Debug\PPEV2DAL.pdb
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\obj\Debug\PPEV2DAL.csprojResolveAssemblyReference.cache
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\obj\Debug\PPEV2DAL.dll
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\obj\Debug\PPEV2DAL.pdb
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\PPEV2DAL.dll
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\PPEV2DAL.pdb
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\MySql.Data.dll
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\PPEV2BO.dll
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\PPEV2BO.pdb
+C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\MySql.Data.xml

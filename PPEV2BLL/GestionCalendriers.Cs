@@ -20,24 +20,20 @@ namespace PPEV2BLL
             }
             return UneGestionCalendriers;
         }
-        //crée une list de calendrier
         public static List<Calendrier> GetCalendriers()
         {
             return CalendrierDAO.GetCalendrier();
         }
-        //crée un calendrier
         public static int CreerCalendrier(DateTime date)
         {
             Calendrier cal = new Calendrier(date);
             return CalendrierDAO.AjoutCalendrier(cal);
         }
-        //modifie un calendrier
         public static int ModifierCalendrier(DateTime date)
         {
             Calendrier cal = new Calendrier(date);
             return CalendrierDAO.UpdateCalendrier(cal);
         }
-        //supprime un calendrier
         public static int SupprimerCalendrier(DateTime date)
         {
             return CalendrierDAO.DeleteCalendrier(date);

@@ -20,6 +20,8 @@ namespace PPEV2
 
         private void buttonMenu1_Click(object sender, EventArgs e)
         {
+            listeChevaux m = new listeChevaux();
+            m.Show();
             this.Hide();
         }
 

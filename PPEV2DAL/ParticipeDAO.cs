@@ -42,6 +42,7 @@ namespace PPEV2DAL
                 Participe uneParti = new Participe(partiCheval, partiCourse, partiJockey, partiDate, partiClass);
                 listParticipe.Add(uneParti);
             }
+            MaConnectionSql.MonLecteur.Close();
             MaConnectionSql.CloseConnection();
             return listParticipe;
         }

@@ -57,7 +57,7 @@ namespace PPEV2DAL
             string stringSql = "select * from jockey where joc_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql;
             MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
-            if (MaConnectionSql.MonLecteur.Read() == true)
+            if (MaConnectionSql.MonLecteur.Read())
             {
                 int jockId = (int)MaConnectionSql.MonLecteur["joc_id"];
                 string jockNom = (string)MaConnectionSql.MonLecteur["joc_nom"];
@@ -66,7 +66,7 @@ namespace PPEV2DAL
                 string jockCiv = (string)MaConnectionSql.MonLecteur["joc_civilite"];
                 unJockey = new Jockey(jockId, jockNom, jockPrenom, jockAge, jockCiv);
             }
-            MaConnectionSql.MonLecteur.Close();
+            
             MaConnectionSql.CloseConnection();
             return unJockey;
         }

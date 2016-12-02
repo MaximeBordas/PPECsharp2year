@@ -67,14 +67,15 @@ namespace PPEV2DAL
         // C'est VIIIIIINCE qui m'a donné cette méthode. Va falloir la tester (voir CHEVAL DAO création de l'objet cheval a partir de la BDD)
         public static Entraineur GetUnEntraineur(int id)
         {
-            Entraineur unEnt = null;
+            Entraineur unEntraineur = null;
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
             string stringSql = "select * from entraineur where ent_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql;
             MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
-            if (MaConnectionSql.MonLecteur.Read() == true)
+
+            if(MaConnectionSql.MonLecteur.Read())
             {
                 int entId = (int)MaConnectionSql.MonLecteur["ent_id"];
                 string entNom = (string)MaConnectionSql.MonLecteur["ent_nom"];
@@ -82,11 +83,12 @@ namespace PPEV2DAL
                 int entAge = (int)MaConnectionSql.MonLecteur["ent_age"];
                 string entCivilite = (string)MaConnectionSql.MonLecteur["ent_civilite"];
                 string entLocalisation = (string)MaConnectionSql.MonLecteur["ent_localisation"];
-                unEnt = new Entraineur(entId, entNom, entPrenom, entAge, entCivilite, entLocalisation);
+                unEntraineur = new Entraineur(entId, entNom, entPrenom, entAge, entCivilite, entLocalisation);
             }
-            MaConnectionSql.MonLecteur.Close();
+            
+
             MaConnectionSql.CloseConnection();
-            return unEnt;
+            return unEntraineur;
         }
         //Cette méthode modifie un utilisateur passé en paramétre dans la BD
         // A VERIFIER ABSOLUMENT

@@ -45,7 +45,7 @@
             // 
             this.labeltime.AutoSize = true;
             this.labeltime.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.labeltime.Location = new System.Drawing.Point(762, 530);
+            this.labeltime.Location = new System.Drawing.Point(762, 480);
             this.labeltime.Name = "labeltime";
             this.labeltime.Size = new System.Drawing.Size(81, 22);
             this.labeltime.TabIndex = 19;
@@ -55,7 +55,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.Location = new System.Drawing.Point(365, 156);
+            this.label2.Location = new System.Drawing.Point(365, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(290, 25);
             this.label2.TabIndex = 18;
@@ -64,7 +64,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(370, 192);
+            this.dataGridView1.Location = new System.Drawing.Point(370, 156);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(473, 208);
             this.dataGridView1.TabIndex = 17;
@@ -133,7 +133,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(68, 3);
+            this.label1.Location = new System.Drawing.Point(68, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 55);
             this.label1.TabIndex = 10;
@@ -143,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 579);
+            this.ClientSize = new System.Drawing.Size(878, 534);
             this.Controls.Add(this.labeltime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
@@ -154,6 +154,7 @@
             this.Controls.Add(this.buttonMenu2);
             this.Controls.Add(this.buttonMenu1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Menu";
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);

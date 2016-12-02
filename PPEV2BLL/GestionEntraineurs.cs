@@ -26,19 +26,20 @@ namespace PPEV2BLL
         {
             return EntraineurDAO.GetEntraineurs();
         }
-        //crée un entraineur
+        public static Entraineur GetUnEntraineurs(int id)
+        {
+            return EntraineurDAO.GetUnEntraineur(id);
+        }
         public static int CreerEntraineur(string nom, string prenom, int age, string civilite, string localisation)
         {
             Entraineur et = new Entraineur(nom, prenom, age, civilite, localisation);
             return EntraineurDAO.AjoutEntraineur(et);
         }
-        //modifie un entraineur
         public static int ModifierEntraineur(string nom, string prenom, int age, string civilite, string localisation)
         {
             Entraineur et = new Entraineur(nom, prenom, age, civilite, localisation);
             return EntraineurDAO.UpdateEntraineur(et);
         }
-        //supprimer un entraineur
         public static int SupprimerEntraineur(int id)
         {
             return EntraineurDAO.DeleteEntraineur(id);

@@ -20,24 +20,24 @@ namespace PPEV2BLL
             }
             return uneGestionCourses;
         }
-        //Crée une list de course
         public static List<Course> GetCourses()
         {
             return CoursesDAO.GetCourses();
         }
-        //crée une course
+        public static Course GetUneCourse(int id)
+        {
+            return CoursesDAO.GetUneCourse(id);
+        }
         public static int CreerCourse(string nom, string lieu, int nbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, Hippodrome unHip)
         {
             Course crs = new Course(nom, lieu, nbrMax, unPrice, unFirst, unSecond, unThird, unFourth, unFifth, unHip);
             return CoursesDAO.AjoutCourse(crs);
         }
-        //modifie une course
         public static int ModifierCourse(string nom, string lieu, int nbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, Hippodrome unHip)
         {
             Course crs = new Course(nom, lieu, nbrMax, unPrice, unFirst, unSecond, unThird, unFourth, unFifth, unHip);
             return CoursesDAO.UpdateCourse(crs);
         }
-        //supprimer une course
         public static int SupprimerCourse(int id)
         {
             return CoursesDAO.DeleteCourse(id);

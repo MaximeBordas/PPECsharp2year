@@ -17,8 +17,10 @@ namespace PPEV2BO
         private string nompere;
         private string nommere;
         private string sexe;
-        private Entraineur ent;
-        private Proprietaire pro;
+        private int ent;
+        private int pro;
+        //private Entraineur ent;
+        //private Proprietaire pro;
 
         // NE PAS OUBLIER D'ASSIGNER ID PROPRIETAIRE et ID ENTRAINEUR
 
@@ -63,19 +65,20 @@ namespace PPEV2BO
             get { return sexe; }
             set { sexe = value; }
         }
-        public Entraineur Ent
+        public int Entraineur
         {
             get { return ent; }
             set { ent = value; }
         }
-        public Proprietaire Pro
+        public int Proprietaire
         {
             get { return pro; }
             set { pro = value; }
         }
 
+
         // CONSTRUCTEUR
-        public Cheval(int unId, string unNom, string uneCouleur, int unAge, string uneSpe, string unNomPere, string unNomMere, string unSexe, Entraineur unEntraineur, Proprietaire unProprietaire)
+        public Cheval(int unId, string unNom, string uneCouleur, int unAge, string uneSpe, string unNomPere, string unNomMere, string unSexe, int unEnt, int unPro)
         {
             id = unId;
             nom = unNom;
@@ -85,10 +88,10 @@ namespace PPEV2BO
             nompere = unNomPere;
             nommere = unNomMere;
             sexe = unSexe;
-            ent = unEntraineur;
-            pro = unProprietaire;
+            ent = unEnt;
+            pro = unPro;
         }
-        public Cheval(string unNom, string uneCouleur, int unAge, string uneSpe, string unNomPere, string unNomMere, string unSexe, Entraineur unEntraineur, Proprietaire unProprietaire)
+        public Cheval(string unNom, string uneCouleur, int unAge, string uneSpe, string unNomPere, string unNomMere, string unSexe, int unEnt, int unPro)
         {
             nom = unNom;
             couleur = uneCouleur;
@@ -97,8 +100,8 @@ namespace PPEV2BO
             nompere = unNomPere;
             nommere = unNomMere;
             sexe = unSexe;
-            ent = unEntraineur;
-            pro = unProprietaire;
+            ent = unEnt;
+            pro = unPro;
         }
     }
 }

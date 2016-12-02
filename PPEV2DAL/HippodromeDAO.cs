@@ -53,14 +53,14 @@ namespace PPEV2DAL
             string stringSql = "select * from hippodrome where hip_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql;
             MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
-            if(MaConnectionSql.MonLecteur.Read())
+            if (MaConnectionSql.MonLecteur.Read())
             {
                 int hipId = (int)MaConnectionSql.MonLecteur["hip_id"];
                 string hipNom = (string)MaConnectionSql.MonLecteur["hip_nom"];
                 string hipLieu = (string)MaConnectionSql.MonLecteur["hip_lieu"];
                 unHip = new Hippodrome(hipId, hipNom, hipLieu);
             }
-            MaConnectionSql.MonLecteur.Close();
+            
             MaConnectionSql.CloseConnection();
             return unHip;
         }

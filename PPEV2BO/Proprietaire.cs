@@ -50,5 +50,9 @@ namespace PPEV2BO
             prenom = unPrenom;
             civilite = uneCivilite;
         }
+        public Proprietaire()
+        {
+
+        }
     }
 }

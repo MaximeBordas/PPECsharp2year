@@ -8,7 +8,7 @@ using PPEV2DAL;
 
 namespace PPEV2BLL
 {
-    class GestionChevaux
+    public class GestionChevaux
     {
         private GestionChevaux uneGestionChevaux;
 
@@ -20,27 +20,28 @@ namespace PPEV2BLL
             }
             return uneGestionChevaux;
         }
-        //List contenant tout les chevaux
+
         public static List<Cheval> GetChevaux()
         {
             return ChevalDAO.GetChevaux();
         }
-        //Crée un cheval
-        public static int CreerCheval(string nom, string couleur, int age, string specialite, string nompere, string nommere, string sexe, Entraineur unEnt, Proprietaire unPro)
+        public static Cheval GetUnChevaux(int id)
+        {
+            return ChevalDAO.GetUnCheval(id);
+        }
+        public static int CreerCheval(string nom, string couleur, int age, string specialite, string nompere, string nommere, string sexe, int unEnt, int unPro)
         {
             Cheval ch = new Cheval(nom, couleur, age, specialite, nompere, nommere, sexe, unEnt, unPro);
             return ChevalDAO.AjoutCheval(ch);
         }
-        //modifier un cheval
-        public static int ModifierCheval(string nom, string couleur, int age, string specialite, string nompere, string nommere, string sexe, Entraineur unEnt, Proprietaire unPro)
+        public static int ModifierCheval(int id,string nom, string couleur, int age, string specialite, string nompere, string nommere, string sexe, int unEnt, int unPro)
         {
-            Cheval ch = new Cheval(nom, couleur, age, specialite, nompere, nommere, sexe, unEnt, unPro);
+            Cheval ch = new Cheval(id, nom, couleur, age, specialite, nompere, nommere, sexe, unEnt, unPro);
             return ChevalDAO.UpdateCheval(ch);
         }
-        //supprimer un cheval
         public static int SupprimerCheval(int id)
         {
-            return EntraineurDAO.DeleteEntraineur(id);
+            return ChevalDAO.DeleteCheval(id);
         }
 
     }

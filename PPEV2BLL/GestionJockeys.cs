@@ -20,24 +20,25 @@ namespace PPEV2BLL
             }
             return uneGestionJockey;
         }
-        // Méthode qui renvoit une List d'objets Jockey en faisant appel à la méthode GetJockey() de la DAL
+
         public static List<Jockey> GetJockeys()
         {
             return JockeyDAO.GetJockeys();
         }
-        //crée un jockey
+        public static Jockey GetUnJockey(int id)
+        {
+            return JockeyDAO.GetUnJockey(id);
+        }
         public static int CreerJockey(string nom, string prenom, int age, string civilite)
         {
             Jockey jo = new Jockey(nom, prenom, age, civilite);
             return JockeyDAO.AjoutJockey(jo);
         }
-        //modifier un jockey
         public static int ModifierJockey(string nom, string prenom, int age, string civilite)
         {
             Jockey jo = new Jockey(nom, prenom, age, civilite);
             return JockeyDAO.UpdateJockey(jo);
         }
-        //supprimer un jockey
         public static int SupprimerJockey(int id)
         {
             return JockeyDAO.DeleteJockey(id);

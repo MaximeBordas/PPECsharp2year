@@ -98,15 +98,16 @@ namespace PPEV2DAL
         public static Course GetUneCourse(int id)
         {
             Course uneCourse = null;
+
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
             string stringSql2 = "select * from course where crs_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql2;
             MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
-            if(MaConnectionSql.MonLecteur.Read() == true)
+            // recuperation de valeurs
+            if (MaConnectionSql.MonLecteur.Read())
             {
-                // recuperation de valeurs
                 int crsId = (int)MaConnectionSql.MonLecteur["crs_id"];
                 string crsNom = (string)MaConnectionSql.MonLecteur["crs_nom"];
                 string crsLieu = (string)MaConnectionSql.MonLecteur["crs_lieu"];
@@ -119,11 +120,12 @@ namespace PPEV2DAL
                 int crsFifth = (int)MaConnectionSql.MonLecteur["crs_fifth"];
                 Hippodrome courseHip = HippodromeDAO.GetUnHippodrome((int)MaConnectionSql.MonLecteur["hip_id"]);
 
-                 uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip);
+                uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip);
             }
-            MaConnectionSql.MonLecteur.Close();
-            MaConnectionSql.CloseConnection();
+
+            
             return uneCourse;
+            MaConnectionSql.CloseConnection();
         }
     }
 }

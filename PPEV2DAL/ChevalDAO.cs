@@ -43,8 +43,10 @@ namespace PPEV2DAL
                 string chevalNomMere = (string)MaConnectionSql.MonLecteur["ch_nommere"];
                 string chevalSexe = (string)MaConnectionSql.MonLecteur["ch_sexe"];
                 // c'est ici que ça deviens compliqué, bien lire les deux prochaines lignes plusieurs fois pour comprendre.
-                Entraineur chevalEnt = EntraineurDAO.GetUnEntraineur((int)MaConnectionSql.MonLecteur["ent_id"]);
-                Proprietaire chevalPro = ProprietaireDAO.GetUnProprietaire((int)MaConnectionSql.MonLecteur["pro_id"]);
+                int chevalEnt = (int)MaConnectionSql.MonLecteur["ent_id"];
+                int chevalPro = (int)MaConnectionSql.MonLecteur["pro_id"];
+                //Entraineur chevalEnt = EntraineurDAO.GetUnEntraineur((int)MaConnectionSql.MonLecteur["ent_id"]);
+                //Proprietaire chevalPro = ProprietaireDAO.GetUnProprietaire((int)MaConnectionSql.MonLecteur["pro_id"]);
 
                 // Et la bim, on crée l'objet cheval. ( Et y'a pas d'erreur wow )
                 Cheval unCheval = new Cheval(chevalId, chevalNom, chevalCouleur, chevalAge, chevalSpecialite, chevalNomPere, chevalNomMere, chevalSexe, chevalEnt, chevalPro);
@@ -68,7 +70,7 @@ namespace PPEV2DAL
             MaConnectionSql.OpenConnection();
             // ok, la ligne suivante en sql fait un peu mal à la tête
             // merci de bien la vérifié au niveau de cheval.ent.id et cheval.pro.Id
-            string stringSql = " insert into cheval (ch_nom, ch_couleur, ch_age, ch_specialite, ch_nompere, ch_nommere, ch_sexe, ent_id, pro_id) VALUES ('" + unCheval.Nom + "','" + unCheval.Couleur +  "'," + unCheval.Age + ",'" + unCheval.Specialite + "','" + unCheval.Nompere + "','" + unCheval.Nommere + "','" + unCheval.Sexe + "'," + unCheval.Ent.Id + "," + unCheval.Pro.Id + ")";
+            string stringSql = " insert into cheval (ch_nom, ch_couleur, ch_age, ch_specialite, ch_nompere, ch_nommere, ch_sexe, ent_id, pro_id) VALUES ('" + unCheval.Nom + "','" + unCheval.Couleur +  "'," + unCheval.Age + ",'" + unCheval.Specialite + "','" + unCheval.Nompere + "','" + unCheval.Nommere + "','" + unCheval.Sexe + "'," + unCheval.Entraineur + "," + unCheval.Proprietaire + ")";
             MaConnectionSql.Cmd.CommandText = stringSql;
             nbEnr = MaConnectionSql.Cmd.ExecuteNonQuery();
             MaConnectionSql.CloseConnection();
@@ -83,7 +85,7 @@ namespace PPEV2DAL
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
-            string stringSql = "update cheval set ch_nom = '" + unCheval.Nom + "', ch_couleur = '" + unCheval.Couleur + "', ch_age = " + unCheval.Age + ", ch_specialite = '" + unCheval.Specialite + "', ch_nompere = '" + unCheval.Nompere + "', ch_nommere = '" + unCheval.Nommere + "', ch_sexe = '" + unCheval.Sexe + "', ent_id = " + unCheval.Ent.Id + ", pro_id = " + unCheval.Pro.Id + "WHERE pro_id = " + unCheval.Id;
+            string stringSql = "update cheval set ch_nom = '" + unCheval.Nom + "', ch_couleur = '" + unCheval.Couleur + "', ch_age = " + unCheval.Age + ", ch_specialite = '" + unCheval.Specialite + "', ch_nompere = '" + unCheval.Nompere + "', ch_nommere = '" + unCheval.Nommere + "', ch_sexe = '" + unCheval.Sexe + "', ent_id = " + unCheval.Entraineur + ", pro_id = " + unCheval.Proprietaire + " WHERE ch_id  =" + unCheval.Id;
             MaConnectionSql.Cmd.CommandText = stringSql;
             nbEnr = MaConnectionSql.Cmd.ExecuteNonQuery();
             MaConnectionSql.CloseConnection();
@@ -112,7 +114,7 @@ namespace PPEV2DAL
             string stringSql2 = "select * from cheval where ch_id " + id;
             MaConnectionSql.Cmd.CommandText = stringSql2;
             MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
-            if(MaConnectionSql.MonLecteur.Read())
+            if (MaConnectionSql.MonLecteur.Read())
             {
                 // recuperation de valeurs
                 int chevalId = (int)MaConnectionSql.MonLecteur["ch_id"];
@@ -124,14 +126,15 @@ namespace PPEV2DAL
                 string chevalNomMere = (string)MaConnectionSql.MonLecteur["ch_nommere"];
                 string chevalSexe = (string)MaConnectionSql.MonLecteur["ch_sexe"];
                 // c'est ici que ça deviens compliqué, bien lire les deux prochaines lignes plusieurs fois pour comprendre.
-                Entraineur chevalEnt = EntraineurDAO.GetUnEntraineur((int)MaConnectionSql.MonLecteur["ent_id"]);
-                Proprietaire chevalPro = ProprietaireDAO.GetUnProprietaire((int)MaConnectionSql.MonLecteur["pro_id"]);
+                int chevalEnt = (int)MaConnectionSql.MonLecteur["ent_id"];
+                int chevalPro = (int)MaConnectionSql.MonLecteur["pro_id"];
 
                 // Et la bim, on crée l'objet cheval. ( Et y'a pas d'erreur wow )
-                 unCheval = new Cheval(chevalId, chevalNom, chevalCouleur, chevalAge, chevalSpecialite, chevalNomPere, chevalNomMere, chevalSexe, chevalEnt, chevalPro);
+                unCheval = new Cheval(chevalId, chevalNom, chevalCouleur, chevalAge, chevalSpecialite, chevalNomPere, chevalNomMere, chevalSexe, chevalEnt, chevalPro);
+
             }
-            MaConnectionSql.MonLecteur.Close();
-            MaConnectionSql.CloseConnection();
+            
+
             return unCheval;
         }
     }

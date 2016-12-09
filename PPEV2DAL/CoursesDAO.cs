@@ -43,9 +43,13 @@ namespace PPEV2DAL
                 int crsThird = (int)MaConnectionSql.MonLecteur["crs_third"];
                 int crsFourth = (int)MaConnectionSql.MonLecteur["crs_fourth"];
                 int crsFifth = (int)MaConnectionSql.MonLecteur["crs_fifth"];
-                Hippodrome courseHip = HippodromeDAO.GetUnHippodrome((int)MaConnectionSql.MonLecteur["hip_id"]);
+                int courseHip = (int)MaConnectionSql.MonLecteur["hip_id"];
+                int crsAgeMin = (int)MaConnectionSql.MonLecteur["crs_agemin"];
+                int crsAgeMax = (int)MaConnectionSql.MonLecteur["crs_agemax"];
+                string crsSexe = (string)MaConnectionSql.MonLecteur["crs_sexe"];
+                string crsDate = (string)MaConnectionSql.MonLecteur["crs_date"];
 
-                Course uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip);
+                Course uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip, crsAgeMin, crsAgeMax, crsSexe, crsDate);
 
                 ListCourse.Add(uneCourse);
 
@@ -63,7 +67,7 @@ namespace PPEV2DAL
             MaConnectionSql.OpenConnection();
             // ok, la ligne suivante en sql fait un peu mal à la tête
             // merci de bien la vérifié au niveau de cheval.ent.id et cheval.pro.Id
-            string stringSql = " insert into course (crs_nom, crs_lieu, crs_nbrmax, crs_price, crs_first, crs_second, crs_third, crs_fourth, crs_fifth, hip_id) VALUES ('" + uneCourse.Nom + "','" + uneCourse.Lieu + "'," + uneCourse.NbrMax + "," + uneCourse.Price + "," + uneCourse.First + "," + uneCourse.Second + "," + uneCourse.Third + "," + uneCourse.Fourth + "," + uneCourse.Fifth + "," + uneCourse.Hip.Id + ")";
+            string stringSql = " insert into course (crs_nom, crs_lieu, crs_nbrmax, crs_price, crs_first, crs_second, crs_third, crs_fourth, crs_fifth, hip_id, crs_agemin, crs_agemax, crs_sexe, crs_date) VALUES ('" + uneCourse.Nom + "','" + uneCourse.Lieu + "'," + uneCourse.NbrMax + "," + uneCourse.Price + "," + uneCourse.First + "," + uneCourse.Second + "," + uneCourse.Third + "," + uneCourse.Fourth + "," + uneCourse.Fifth + "," + uneCourse.Hip + "," + uneCourse.AgeMin + "," + uneCourse.AgeMax + ",'" + uneCourse.Sexe + "','" + uneCourse.Date + "')";
             MaConnectionSql.Cmd.CommandText = stringSql;
             nbEnr = MaConnectionSql.Cmd.ExecuteNonQuery();
             MaConnectionSql.CloseConnection();
@@ -76,7 +80,7 @@ namespace PPEV2DAL
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
-            string stringSql = "update course set crs_nom = '" + uneCourse.Nom + "', crs_lieu = '" + uneCourse.Lieu + "', crs_nbrmax = " + uneCourse.NbrMax + ", crs_price =" + uneCourse.Price + ", crs_first = " + uneCourse.First + ", crs_second = " + uneCourse.Second + ", crs_third = " + uneCourse.Third + ", crs_fourth = " + uneCourse.Fourth + ", crs_fifth = " + uneCourse.Fifth + ", hip_id = " + uneCourse.Hip.Id + "WHERE crs_id = " + uneCourse.Id;
+            string stringSql = "update course set crs_nom = '" + uneCourse.Nom + "', crs_lieu = '" + uneCourse.Lieu + "', crs_nbrmax = " + uneCourse.NbrMax + ", crs_price =" + uneCourse.Price + ", crs_first = " + uneCourse.First + ", crs_second = " + uneCourse.Second + ", crs_third = " + uneCourse.Third + ", crs_fourth = " + uneCourse.Fourth + ", crs_fifth = " + uneCourse.Fifth + ", hip_id = " + uneCourse.Hip + ", crs_agemin = " + uneCourse.AgeMin + ", crs_agemax = " + uneCourse.AgeMax + ", crs_sexe = '" + uneCourse.Sexe + "', crs_date = '" + uneCourse.Date + "' WHERE crs_id = " + uneCourse.Id;
             MaConnectionSql.Cmd.CommandText = stringSql;
             nbEnr = MaConnectionSql.Cmd.ExecuteNonQuery();
             MaConnectionSql.CloseConnection();
@@ -97,7 +101,7 @@ namespace PPEV2DAL
         }
         public static Course GetUneCourse(int id)
         {
-            Course uneCourse = null;
+            Course uneAutreCourse = null;
 
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
@@ -118,14 +122,59 @@ namespace PPEV2DAL
                 int crsThird = (int)MaConnectionSql.MonLecteur["crs_third"];
                 int crsFourth = (int)MaConnectionSql.MonLecteur["crs_fourth"];
                 int crsFifth = (int)MaConnectionSql.MonLecteur["crs_fifth"];
-                Hippodrome courseHip = HippodromeDAO.GetUnHippodrome((int)MaConnectionSql.MonLecteur["hip_id"]);
+                int courseHip = (int)MaConnectionSql.MonLecteur["hip_id"];
+                int crsAgeMin = (int)MaConnectionSql.MonLecteur["crs_agemin"];
+                int crsAgeMax = (int)MaConnectionSql.MonLecteur["crs_agemax"];
+                string crsSexe = (string)MaConnectionSql.MonLecteur["crs_sexe"];
+                string crsDate = (string)MaConnectionSql.MonLecteur["crs_date"];
 
-                uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip);
+
+                uneAutreCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip, crsAgeMin, crsAgeMax, crsSexe, crsDate);
+
             }
-
             
-            return uneCourse;
             MaConnectionSql.CloseConnection();
+            return uneAutreCourse;
+
+
+        }
+        public static List<Course> GetCourseDunHip(int id)
+        {
+            List<Course> ListCourse = new List<Course>();
+            ConnexionDb MaConnectionSql = new ConnexionDb();
+            MaConnectionSql.InitializeConnection();
+            MaConnectionSql.OpenConnection();
+            string stringSql2 = "select * from course where hip_id = " + id;
+            MaConnectionSql.Cmd.CommandText = stringSql2;
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            // recuperation de valeurs
+            while (MaConnectionSql.MonLecteur.Read())
+            {
+                // recuperation de valeurs
+                int crsId = (int)MaConnectionSql.MonLecteur["crs_id"];
+                string crsNom = (string)MaConnectionSql.MonLecteur["crs_nom"];
+                string crsLieu = (string)MaConnectionSql.MonLecteur["crs_lieu"];
+                int crsnbrsMax = (int)MaConnectionSql.MonLecteur["crs_nbrmax"];
+                int crsPrice = (int)MaConnectionSql.MonLecteur["crs_price"];
+                int crsFirst = (int)MaConnectionSql.MonLecteur["crs_first"];
+                int crsSecond = (int)MaConnectionSql.MonLecteur["crs_second"];
+                int crsThird = (int)MaConnectionSql.MonLecteur["crs_third"];
+                int crsFourth = (int)MaConnectionSql.MonLecteur["crs_fourth"];
+                int crsFifth = (int)MaConnectionSql.MonLecteur["crs_fifth"];
+                int courseHip = (int)MaConnectionSql.MonLecteur["hip_id"];
+                int crsAgeMin = (int)MaConnectionSql.MonLecteur["crs_agemin"];
+                int crsAgeMax = (int)MaConnectionSql.MonLecteur["crs_agemax"];
+                string crsSexe = (string)MaConnectionSql.MonLecteur["crs_sexe"];
+                string crsDate = (string)MaConnectionSql.MonLecteur["crs_date"];
+
+                Course uneCourse = new Course(crsId, crsNom, crsLieu, crsnbrsMax, crsPrice, crsFirst, crsSecond, crsThird, crsFourth, crsFifth, courseHip, crsAgeMin, crsAgeMax, crsSexe, crsDate);
+
+                ListCourse.Add(uneCourse);
+
+            }
+            MaConnectionSql.MonLecteur.Close();
+            MaConnectionSql.CloseConnection();
+            return ListCourse;
         }
     }
 }

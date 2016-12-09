@@ -52,12 +52,13 @@
             this.SpeListBox = new System.Windows.Forms.TextBox();
             this.NomEntComboBox = new System.Windows.Forms.ComboBox();
             this.NomProComboBox = new System.Windows.Forms.ComboBox();
+            this.btn_quitter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(744, 331);
+            this.button1.Location = new System.Drawing.Point(756, 316);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 0;
@@ -110,6 +111,7 @@
             this.NOMMereTextBox.Name = "NOMMereTextBox";
             this.NOMMereTextBox.Size = new System.Drawing.Size(100, 20);
             this.NOMMereTextBox.TabIndex = 36;
+            this.NOMMereTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NOMMereTextBox_KeyPress);
             // 
             // NOMPereTextBox
             // 
@@ -117,6 +119,7 @@
             this.NOMPereTextBox.Name = "NOMPereTextBox";
             this.NOMPereTextBox.Size = new System.Drawing.Size(100, 20);
             this.NOMPereTextBox.TabIndex = 35;
+            this.NOMPereTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NOMPereTextBox_KeyPress);
             // 
             // AGETextBox
             // 
@@ -124,6 +127,7 @@
             this.AGETextBox.Name = "AGETextBox";
             this.AGETextBox.Size = new System.Drawing.Size(59, 20);
             this.AGETextBox.TabIndex = 34;
+            this.AGETextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AGETextBox_KeyPress);
             // 
             // NOMTextBox
             // 
@@ -131,6 +135,7 @@
             this.NOMTextBox.Name = "NOMTextBox";
             this.NOMTextBox.Size = new System.Drawing.Size(100, 20);
             this.NOMTextBox.TabIndex = 33;
+            this.NOMTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NOMTextBox_KeyPress);
             // 
             // label9
             // 
@@ -215,7 +220,7 @@
             // 
             // btnsuppr
             // 
-            this.btnsuppr.Location = new System.Drawing.Point(825, 331);
+            this.btnsuppr.Location = new System.Drawing.Point(837, 316);
             this.btnsuppr.Name = "btnsuppr";
             this.btnsuppr.Size = new System.Drawing.Size(75, 32);
             this.btnsuppr.TabIndex = 43;
@@ -225,7 +230,7 @@
             // 
             // btnajout
             // 
-            this.btnajout.Location = new System.Drawing.Point(663, 331);
+            this.btnajout.Location = new System.Drawing.Point(675, 316);
             this.btnajout.Name = "btnajout";
             this.btnajout.Size = new System.Drawing.Size(75, 32);
             this.btnajout.TabIndex = 44;
@@ -239,6 +244,7 @@
             this.CouleurTextBox.Name = "CouleurTextBox";
             this.CouleurTextBox.Size = new System.Drawing.Size(100, 20);
             this.CouleurTextBox.TabIndex = 45;
+            this.CouleurTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CouleurTextBox_KeyPress);
             // 
             // SpeListBox
             // 
@@ -246,6 +252,7 @@
             this.SpeListBox.Name = "SpeListBox";
             this.SpeListBox.Size = new System.Drawing.Size(100, 20);
             this.SpeListBox.TabIndex = 46;
+            this.SpeListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SpeListBox_KeyPress);
             // 
             // NomEntComboBox
             // 
@@ -263,11 +270,22 @@
             this.NomProComboBox.Size = new System.Drawing.Size(121, 21);
             this.NomProComboBox.TabIndex = 48;
             // 
+            // btn_quitter
+            // 
+            this.btn_quitter.Location = new System.Drawing.Point(837, 354);
+            this.btn_quitter.Name = "btn_quitter";
+            this.btn_quitter.Size = new System.Drawing.Size(75, 23);
+            this.btn_quitter.TabIndex = 70;
+            this.btn_quitter.Text = "Retour";
+            this.btn_quitter.UseVisualStyleBackColor = true;
+            this.btn_quitter.Click += new System.EventHandler(this.btn_quitter_Click);
+            // 
             // listeChevaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 387);
+            this.Controls.Add(this.btn_quitter);
             this.Controls.Add(this.NomProComboBox);
             this.Controls.Add(this.NomEntComboBox);
             this.Controls.Add(this.SpeListBox);
@@ -327,5 +345,6 @@
         private System.Windows.Forms.TextBox SpeListBox;
         private System.Windows.Forms.ComboBox NomEntComboBox;
         private System.Windows.Forms.ComboBox NomProComboBox;
+        private System.Windows.Forms.Button btn_quitter;
     }
 }

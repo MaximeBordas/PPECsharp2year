@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PPEV2BLL;
 
 namespace PPEV2
 {
@@ -15,7 +16,17 @@ namespace PPEV2
         public Menu()
         {
             InitializeComponent();
-            labeltime.Text = DateTime.Now.ToString();
+            labeltime.Text = DateTime.Now.ToShortDateString();
+
+
+            BindingSource bSource = new BindingSource();
+            DataTable table = GestionParticipations.GetDerniereCourse(2);
+            bSource.DataSource = table;
+            dataGridView1.DataSource = bSource;
+
+
+
+
         }
 
         private void buttonMenu1_Click(object sender, EventArgs e)
@@ -27,21 +38,29 @@ namespace PPEV2
 
         private void buttonMenu2_Click(object sender, EventArgs e)
         {
+            listeEntraineurs m = new listeEntraineurs();
+            m.Show();
             this.Hide();
         }
 
         private void buttonMenu3_Click(object sender, EventArgs e)
         {
+            listeCourses m = new listeCourses();
+            m.Show();
             this.Hide();
         }
 
         private void buttonMenu4_Click(object sender, EventArgs e)
         {
+            gestioncourses m = new gestioncourses();
+            m.Show();
             this.Hide();
         }
 
         private void buttonMenu5_Click(object sender, EventArgs e)
         {
+            listeResultats m = new listeResultats();
+            m.Show();
             this.Hide();
         }
 

@@ -19,7 +19,11 @@ namespace PPEV2BO
         private int third;
         private int fourth;
         private int fifth;
-        private Hippodrome hip;
+        private int hip;
+        private int ageMin;
+        private int ageMax;
+        private string sexe;
+        private string date;
 
         // NE PAS OUBLIER D'ASSIGNER ID HIPPODROME
 
@@ -74,14 +78,34 @@ namespace PPEV2BO
             get { return fifth; }
             set { fifth = value; }
         }
-        public Hippodrome Hip
+        public int Hip
         {
             get { return hip; }
             set { hip = value; }
         }
+        public int AgeMin
+        {
+            get { return ageMin; }
+            set { ageMin = value; }
+        }
+        public int AgeMax
+        {
+            get { return ageMax; }
+            set { ageMax = value; }
+        }
+        public string Sexe
+        {
+            get { return sexe; }
+            set { sexe = value; }
+        }
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
 
         //CONSTRUCTEUR
-        public Course(int unId, string unNom, string unLieu,int unNbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, Hippodrome unHip)
+        public Course(int unId, string unNom, string unLieu,int unNbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, int unHip, int unAgeMin, int unAgeMax, string unSexe, string uneDate)
         {
             id = unId;
             nom = unNom;
@@ -94,8 +118,12 @@ namespace PPEV2BO
             fourth = unFourth;
             fifth = unFifth;
             hip = unHip;
+            ageMin = unAgeMin;
+            ageMax = unAgeMax;
+            sexe = unSexe;
+            date = uneDate;
         }
-        public Course(string unNom, string unLieu, int unNbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, Hippodrome unHip)
+        public Course(string unNom, string unLieu, int unNbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, int unHip, int unAgeMin, int unAgeMax, string unSexe, string uneDate)
         {
             nom = unNom;
             lieu = unLieu;
@@ -107,6 +135,14 @@ namespace PPEV2BO
             fourth = unFourth;
             fifth = unFifth;
             hip = unHip;
+            ageMin = unAgeMin;
+            ageMax = unAgeMax;
+            sexe = unSexe;
+            date = uneDate;
+        }
+        public Course()
+        {
+            
         }
 
 

@@ -26,6 +26,10 @@ namespace PPEV2BLL
         {
             return EntraineurDAO.GetEntraineurs();
         }
+        public static List<Cheval> GetChevauxEntraineurs(int id)
+        {
+            return EntraineurDAO.GetChevauxEntrainer(id);
+        }
         public static Entraineur GetUnEntraineurs(int id)
         {
             return EntraineurDAO.GetUnEntraineur(id);
@@ -35,9 +39,9 @@ namespace PPEV2BLL
             Entraineur et = new Entraineur(nom, prenom, age, civilite, localisation);
             return EntraineurDAO.AjoutEntraineur(et);
         }
-        public static int ModifierEntraineur(string nom, string prenom, int age, string civilite, string localisation)
+        public static int ModifierEntraineur(int id,string nom, string prenom, int age, string civilite, string localisation)
         {
-            Entraineur et = new Entraineur(nom, prenom, age, civilite, localisation);
+            Entraineur et = new Entraineur(id, nom, prenom, age, civilite, localisation);
             return EntraineurDAO.UpdateEntraineur(et);
         }
         public static int SupprimerEntraineur(int id)

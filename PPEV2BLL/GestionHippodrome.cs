@@ -8,7 +8,7 @@ using PPEV2DAL;
 
 namespace PPEV2BLL
 {
-    class GestionHippodrome
+    public class GestionHippodrome
     {
         private GestionHippodrome uneGestionHippodrome;
 

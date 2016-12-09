@@ -48,7 +48,9 @@ namespace PPEV2
         {
             if (MessageBox.Show("Etes vous sur de vouloir modifier le cheval selectionné ?", "Attention" ,MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                int idSelected = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                int idSelected = 0;
+                idSelected = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
                 int age = 0;
                 Int32.TryParse(AGETextBox.Text, out age);
                 string sexe = "X";
@@ -89,15 +91,14 @@ namespace PPEV2
 
                 GestionChevaux.ModifierCheval(idSelected,NOMTextBox.Text, CouleurTextBox.Text, age, SpeListBox.Text, NOMPereTextBox.Text, NOMMereTextBox.Text, sexe, ent, pro);
                 MessageBox.Show(NOMTextBox.Text + " a bien été modifié", "Modification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridView1.Update();
-                dataGridView1.Refresh();
-                dataGridView1.DataSource = null;
                 List<PPEV2BO.Cheval> uneListe = new List<PPEV2BO.Cheval>();
                 uneListe = GestionChevaux.GetChevaux();
                 dataGridView1.DataSource = uneListe;
                 this.dataGridView1.Columns[0].Visible = false;
                 this.dataGridView1.Columns[8].Visible = false;
                 this.dataGridView1.Columns[9].Visible = false;
+
+
             }
 
         }
@@ -213,13 +214,73 @@ namespace PPEV2
                 MessageBox.Show(NOMTextBox.Text + " a bien été ajouté", "Ajout", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dataGridView1.Update();
                 dataGridView1.Refresh();
-                dataGridView1.DataSource = null;
                 List<PPEV2BO.Cheval> uneListe = new List<PPEV2BO.Cheval>();
                 uneListe = GestionChevaux.GetChevaux();
                 dataGridView1.DataSource = uneListe;
                 this.dataGridView1.Columns[0].Visible = false;
                 this.dataGridView1.Columns[8].Visible = false;
                 this.dataGridView1.Columns[9].Visible = false;
+            }
+        }
+
+        private void btn_quitter_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu m = new Menu();
+            m.Show();
+        }
+        //les controles de saisies sont la 
+
+        /// <summary>
+        /// Impossible de mettre des num dans le nom du cheval
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NOMTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CouleurTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void AGETextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void SpeListBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void NOMPereTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void NOMMereTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

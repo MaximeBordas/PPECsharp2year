@@ -42,5 +42,8 @@ namespace PPEV2BO
             nom = unNom;
             lieu = unLieu;
         }
+        public Hippodrome()
+        {
+        }
     }
 }

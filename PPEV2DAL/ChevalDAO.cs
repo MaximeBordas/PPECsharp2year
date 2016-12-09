@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PPEV2BO;
 using MySql.Data.MySqlClient;
+using PPEV2DAL;
 
 namespace PPEV2DAL
 {
@@ -111,7 +112,7 @@ namespace PPEV2DAL
             ConnexionDb MaConnectionSql = new ConnexionDb();
             MaConnectionSql.InitializeConnection();
             MaConnectionSql.OpenConnection();
-            string stringSql2 = "select * from cheval where ch_id " + id;
+            string stringSql2 = "select * from cheval where ch_id = " + id;
             MaConnectionSql.Cmd.CommandText = stringSql2;
             MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
             if (MaConnectionSql.MonLecteur.Read())
@@ -137,5 +138,40 @@ namespace PPEV2DAL
 
             return unCheval;
         }
+        public static List<Cheval> GetLesChevauxDuneCourse(int id)
+        {
+            List<Participe> listPart = new List<Participe>();
+
+            
+            ConnexionDb MaConnectionSql = new ConnexionDb();
+            MaConnectionSql.InitializeConnection();
+            MaConnectionSql.OpenConnection();
+
+            string stringSql2 = "select * from participe where crs_id = " + id;
+            MaConnectionSql.Cmd.CommandText = stringSql2;
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            while (MaConnectionSql.MonLecteur.Read())
+            {
+                // recuperation de valeurs
+                int chevalId = (int)MaConnectionSql.MonLecteur["ch_id"];
+                int courseId = (int)MaConnectionSql.MonLecteur["crs_id"];
+                int jockeyId = (int)MaConnectionSql.MonLecteur["joc_id"];
+                int classement = (int)MaConnectionSql.MonLecteur["classement"];
+                
+                Participe uneParticipation = new Participe(chevalId, courseId, jockeyId, classement);
+                // on ajoute le cheval à la liste
+                listPart.Add(uneParticipation);
+            }
+            List<Cheval> listChe = new List<Cheval>();
+            foreach (Participe unPar in listPart)
+            {
+                listChe.Add(GetUnCheval(unPar.Cheval));
+            }
+            MaConnectionSql.MonLecteur.Close();
+            MaConnectionSql.CloseConnection();
+            return listChe;
+            // auccune erreur, wow.
+        }
+        
     }
 }

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using PPEV2BO;
 using PPEV2DAL;
+using System.Data;
 
 namespace PPEV2BLL
 {
-    class GestionParticipations
+    public class GestionParticipations
     {
         private GestionParticipations UneGestionParticipations;
 
@@ -24,19 +25,27 @@ namespace PPEV2BLL
         {
             return ParticipeDAO.GetParticipation();
         }
-        public static int CreerParticipation(Cheval unChe, Course uneCo, Jockey unJo, DateTime date, int unClassement)
+        public static int CreerParticipation(int unChe, int uneCo, int unJo, int unClassement)
         {
-            Participe par = new Participe(unChe, uneCo, unJo, date, unClassement);
+            Participe par = new Participe(unChe, uneCo, unJo, unClassement);
             return ParticipeDAO.AjoutParticipation(par);
         }
-        public static int ModifierParticipation(Cheval unChe, Course uneCo, Jockey unJo, DateTime date, int unClassement)
+        public static int ModifierParticipation(int unChe, int uneCo, int unJo, int unClassement)
         {
-            Participe par = new Participe(unChe, uneCo, unJo, date, unClassement);
+            Participe par = new Participe(unChe, uneCo, unJo, unClassement);
             return ParticipeDAO.UpdateParticipation(par);
         }
         public static int ModifierParticipation(int id)
         {
             return ParticipeDAO.DeleteParticipation(id);
+        }
+        public static int AssignerClassementCheval(int unCh,int uneCrs, int unClassement)
+        {
+            return ParticipeDAO.AssignerClassementCheval(unCh, uneCrs, unClassement);
+        }
+        public static DataTable GetDerniereCourse(int idCourse)
+        {
+            return ParticipeDAO.GetResultatDerniereCourse(idCourse);
         }
     }
 }

@@ -8,7 +8,7 @@ using PPEV2DAL;
 
 namespace PPEV2BLL
 {
-    class GestionJockeys
+    public class GestionJockeys
     {
         private GestionJockeys uneGestionJockey;
 

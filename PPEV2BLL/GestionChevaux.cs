@@ -43,6 +43,10 @@ namespace PPEV2BLL
         {
             return ChevalDAO.DeleteCheval(id);
         }
+        public static List<Cheval> GetChevauxDuneCourse(int id)
+        {
+            return ChevalDAO.GetLesChevauxDuneCourse(id);
+        }
 
     }
 }

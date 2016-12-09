@@ -48,11 +48,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="gestioncourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gestioncourses.Designer.cs">
+      <DependentUpon>gestioncourses.cs</DependentUpon>
+    </Compile>
     <Compile Include="listeChevaux.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="listeChevaux.Designer.cs">
       <DependentUpon>listeChevaux.cs</DependentUpon>
+    </Compile>
+    <Compile Include="listeCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listeCourses.Designer.cs">
+      <DependentUpon>listeCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="listeEntraineurs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listeEntraineurs.Designer.cs">
+      <DependentUpon>listeEntraineurs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="listeResultats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listeResultats.Designer.cs">
+      <DependentUpon>listeResultats.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -74,8 +98,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="gestioncourses.resx">
+      <DependentUpon>gestioncourses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="listeChevaux.resx">
       <DependentUpon>listeChevaux.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="listeCourses.resx">
+      <DependentUpon>listeCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="listeEntraineurs.resx">
+      <DependentUpon>listeEntraineurs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="listeResultats.resx">
+      <DependentUpon>listeResultats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

@@ -8,7 +8,7 @@ using PPEV2DAL;
 
 namespace PPEV2BLL
 {
-    class GestionCourses
+    public class GestionCourses
     {
         private GestionCourses uneGestionCourses;
 
@@ -28,14 +28,18 @@ namespace PPEV2BLL
         {
             return CoursesDAO.GetUneCourse(id);
         }
-        public static int CreerCourse(string nom, string lieu, int nbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, Hippodrome unHip)
+        public static List<Course> GetCourseDunHip(int id)
         {
-            Course crs = new Course(nom, lieu, nbrMax, unPrice, unFirst, unSecond, unThird, unFourth, unFifth, unHip);
+            return CoursesDAO.GetCourseDunHip(id);
+        }
+        public static int CreerCourse(string nom, string lieu, int nbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, int unHip, int ageMin, int ageMax, string sexe, string uneDate)
+        {
+            Course crs = new Course(nom, lieu, nbrMax, unPrice, unFirst, unSecond, unThird, unFourth, unFifth, unHip, ageMin, ageMax, sexe, uneDate);
             return CoursesDAO.AjoutCourse(crs);
         }
-        public static int ModifierCourse(string nom, string lieu, int nbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, Hippodrome unHip)
+        public static int ModifierCourse(int id, string nom, string lieu, int nbrMax, int unPrice, int unFirst, int unSecond, int unThird, int unFourth, int unFifth, int unHip, int ageMin, int ageMax, string sexe, string uneDate)
         {
-            Course crs = new Course(nom, lieu, nbrMax, unPrice, unFirst, unSecond, unThird, unFourth, unFifth, unHip);
+            Course crs = new Course(id, nom, lieu, nbrMax, unPrice, unFirst, unSecond, unThird, unFourth, unFifth, unHip, ageMin, ageMax, sexe, uneDate);
             return CoursesDAO.UpdateCourse(crs);
         }
         public static int SupprimerCourse(int id)

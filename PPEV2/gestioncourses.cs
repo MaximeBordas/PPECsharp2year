@@ -17,6 +17,11 @@ namespace PPEV2
         {
             InitializeComponent();
 
+            HippodromeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            CourseComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+
             List<PPEV2BO.Hippodrome> listeHip = new List<PPEV2BO.Hippodrome>();
             listeHip = GestionHippodrome.GetHippodrome();
             foreach (PPEV2BO.Hippodrome Hip in listeHip)

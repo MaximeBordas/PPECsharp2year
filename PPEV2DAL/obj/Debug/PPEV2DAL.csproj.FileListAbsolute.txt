@@ -16,3 +16,20 @@ C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\MySql.Data.dll
 C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\PPEV2BO.dll
 C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\PPEV2BO.pdb
 C:\Users\stour\OneDrive\C#\PPEV2.5\PPEV2DAL\bin\Debug\MySql.Data.xml
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\bin\Debug\PPEV2DAL.dll
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\bin\Debug\PPEV2DAL.pdb
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\bin\Debug\MySql.Data.dll
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\bin\Debug\PPEV2BO.dll
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\bin\Debug\PPEV2BO.pdb
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\bin\Debug\MySql.Data.xml
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\obj\Debug\PPEV2DAL.csprojResolveAssemblyReference.cache
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\obj\Debug\PPEV2DAL.dll
+C:\Users\stour\OneDrive\C#\PPEV2.8\PPEV2DAL\obj\Debug\PPEV2DAL.pdb
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\bin\Debug\PPEV2DAL.dll
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\bin\Debug\PPEV2DAL.pdb
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\bin\Debug\PPEV2BO.dll
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\bin\Debug\PPEV2BO.pdb
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\bin\Debug\MySql.Data.xml
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\obj\Debug\PPEV2DAL.csprojResolveAssemblyReference.cache
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\obj\Debug\PPEV2DAL.dll
+C:\Users\Maxime\Documents\Visual Studio 2015\Projects\PPEV2.9\PPEV2DAL\obj\Debug\PPEV2DAL.pdb

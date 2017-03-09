@@ -53,6 +53,7 @@
             this.NomEntComboBox = new System.Windows.Forms.ComboBox();
             this.NomProComboBox = new System.Windows.Forms.ComboBox();
             this.btn_quitter = new System.Windows.Forms.Button();
+            this.reset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +72,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(35, 29);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(597, 334);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -88,10 +90,10 @@
             this.FEMMERadio.AutoSize = true;
             this.FEMMERadio.Location = new System.Drawing.Point(840, 215);
             this.FEMMERadio.Name = "FEMMERadio";
-            this.FEMMERadio.Size = new System.Drawing.Size(56, 17);
+            this.FEMMERadio.Size = new System.Drawing.Size(61, 17);
             this.FEMMERadio.TabIndex = 38;
             this.FEMMERadio.TabStop = true;
-            this.FEMMERadio.Text = "femme";
+            this.FEMMERadio.Text = "Feminin";
             this.FEMMERadio.UseVisualStyleBackColor = true;
             // 
             // HOMMEradio
@@ -99,10 +101,10 @@
             this.HOMMEradio.AutoSize = true;
             this.HOMMEradio.Location = new System.Drawing.Point(756, 217);
             this.HOMMEradio.Name = "HOMMEradio";
-            this.HOMMEradio.Size = new System.Drawing.Size(59, 17);
+            this.HOMMEradio.Size = new System.Drawing.Size(67, 17);
             this.HOMMEradio.TabIndex = 37;
             this.HOMMEradio.TabStop = true;
-            this.HOMMEradio.Text = "homme";
+            this.HOMMEradio.Text = "Masculin";
             this.HOMMEradio.UseVisualStyleBackColor = true;
             // 
             // NOMMereTextBox
@@ -261,6 +263,7 @@
             this.NomEntComboBox.Name = "NomEntComboBox";
             this.NomEntComboBox.Size = new System.Drawing.Size(121, 21);
             this.NomEntComboBox.TabIndex = 47;
+            this.NomEntComboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NomEntComboBox_KeyPress);
             // 
             // NomProComboBox
             // 
@@ -280,11 +283,22 @@
             this.btn_quitter.UseVisualStyleBackColor = true;
             this.btn_quitter.Click += new System.EventHandler(this.btn_quitter_Click);
             // 
+            // reset
+            // 
+            this.reset.Location = new System.Drawing.Point(756, 354);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(75, 23);
+            this.reset.TabIndex = 71;
+            this.reset.Text = "Réinitialiser";
+            this.reset.UseVisualStyleBackColor = true;
+            this.reset.Click += new System.EventHandler(this.button2_Click);
+            // 
             // listeChevaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 387);
+            this.Controls.Add(this.reset);
             this.Controls.Add(this.btn_quitter);
             this.Controls.Add(this.NomProComboBox);
             this.Controls.Add(this.NomEntComboBox);
@@ -346,5 +360,6 @@
         private System.Windows.Forms.ComboBox NomEntComboBox;
         private System.Windows.Forms.ComboBox NomProComboBox;
         private System.Windows.Forms.Button btn_quitter;
+        private System.Windows.Forms.Button reset;
     }
 }

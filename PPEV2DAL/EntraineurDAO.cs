@@ -21,6 +21,11 @@ namespace PPEV2DAL
             return unEntraineurDAO;
         }
 
+        /// <summary>
+        /// Cette méthode retourne une liste de cheval qui sont entrainés par un entraineur en passant l'id de l'entraineur en paramètre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<Cheval> GetChevauxEntrainer(int id)
         {
             List<Cheval> ListeChevaux = new List<Cheval>();
@@ -57,6 +62,11 @@ namespace PPEV2DAL
             return ListeChevaux;
         }
 
+        /// <summary>
+        /// Cette méthode retourne les entraineurs de la BDD sous forme de liste
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public static List<Entraineur> GetEntraineurs()
         {
             List<Entraineur> listEntr = new List<Entraineur>();
@@ -82,8 +92,13 @@ namespace PPEV2DAL
             MaConnectionSql.CloseConnection();
             return listEntr;
         }
-        // Cette méthode insert un nouvel utilisateur passé en paramètre dans la BD
-        // A VERIFIER ABSOLUMENT
+
+
+        /// <summary>
+        /// Cette méthode ajoute un entraineur en BDD
+        /// </summary>
+        /// <param name="unEntraineur"></param>
+        /// <returns></returns>
         public static int AjoutEntraineur(Entraineur unEntraineur)
         {
             int nbEnr;
@@ -99,8 +114,11 @@ namespace PPEV2DAL
         }
 
 
-        // methode qui relie les cables de la DAL avec la BLL
-        // C'est VIIIIIINCE qui m'a donné cette méthode. Va falloir la tester (voir CHEVAL DAO création de l'objet cheval a partir de la BDD)
+        /// <summary>
+        /// Cette méthode retourne un entraineur quand on passe son id en paramètre
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public static Entraineur GetUnEntraineur(int id)
         {
             Entraineur unEntraineur = null;
@@ -126,8 +144,11 @@ namespace PPEV2DAL
             MaConnectionSql.CloseConnection();
             return unEntraineur;
         }
-        //Cette méthode modifie un utilisateur passé en paramétre dans la BD
-        // A VERIFIER ABSOLUMENT
+        /// <summary>
+        /// Cette méthode modifie un entraineur
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public static int UpdateEntraineur(Entraineur unEntraineur)
         {
             int nbEnr;
@@ -141,6 +162,12 @@ namespace PPEV2DAL
             MaConnectionSql.CloseConnection();
             return nbEnr;
         }
+
+        /// <summary>
+        /// Cette méthode supprime un entraineur
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public static int DeleteEntraineur(int id)
         {
             int nbEnr = 0;

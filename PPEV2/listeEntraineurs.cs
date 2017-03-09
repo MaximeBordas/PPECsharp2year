@@ -25,6 +25,11 @@ namespace PPEV2
 
 
             this.dataGridView1.Columns[0].Visible = false;
+            radioButton1.Checked = true;
+
+            // empecher la modification du datagridview
+            dataGridView1.ReadOnly = true;
+            dataGridView2.ReadOnly = true;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -105,6 +110,27 @@ namespace PPEV2
             // A REFAIRE
             if (MessageBox.Show("êtes vous sur de vouloir ajouter l'entraineur selectionné ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                if (textBox1.Text == "")
+                {
+                    MessageBox.Show("Merci de remplir un nom.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (textBox2.Text == "")
+                {
+                    MessageBox.Show("Merci de remplir un prenom.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (textBox3.Text == "")
+                {
+                    MessageBox.Show("Merci de remplir un age.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (textBox4.Text == "")
+                {
+                    MessageBox.Show("Merci de remplir une localisation.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 int idSelected = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                 int age = 0;
                 Int32.TryParse(textBox3.Text, out age);
@@ -135,6 +161,10 @@ namespace PPEV2
 
         private void SuppButton_Click(object sender, EventArgs e)
         {
+
+
+
+
             if (MessageBox.Show("êtes vous sur de vouloir supprimer l'entraineur selectionné ?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int idSelected = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
@@ -209,18 +239,12 @@ namespace PPEV2
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
@@ -233,10 +257,7 @@ namespace PPEV2
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

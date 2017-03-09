@@ -20,6 +20,8 @@ namespace PPEV2
             List<PPEV2BO.Course> uneListe = new List<PPEV2BO.Course>();
             uneListe = GestionCourses.GetCourses();
 
+            HippodromeComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
             // on définit le dataGridView comme étant une liste
             dataGridView1.DataSource = uneListe;
 
@@ -44,6 +46,8 @@ namespace PPEV2
                 HippodromeComboBox.Items.Add(Hip.Nom);
                 HippodromeComboBox.MaxDropDownItems = listeHip.Count();
             }
+            // empecher la modification du datagridview
+            dataGridView1.ReadOnly = true;
         }
 
         private void listeCourses_Load(object sender, EventArgs e)
@@ -344,10 +348,7 @@ namespace PPEV2
 
         private void NOMTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void AGEMINTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -412,6 +413,19 @@ namespace PPEV2
             {
                 e.Handled = true;
             }
+        }
+
+        private void reset_Click(object sender, EventArgs e)
+        {
+            NOMTextBox.Text = "";
+            AGEMINTextBox.Text = "";
+            AGEMAXtextboc.Text = "";
+            NbrChevauxMaxListBox.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
         }
     }
 }

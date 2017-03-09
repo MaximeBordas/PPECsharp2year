@@ -120,5 +120,30 @@ namespace PPEV2DAL
             MaConnectionSql.CloseConnection();
             return table;
         }
+        public static List<Participe> GetListeDuClassement(int idDeCourse)
+        {
+            List<Participe> listParticipe = new List<Participe>();
+            ConnexionDb MaConnectionSql = new ConnexionDb();
+            MaConnectionSql.InitializeConnection();
+            MaConnectionSql.OpenConnection();
+
+            string stringSql2 = "select * from participe WHERE classement != 0 AND crs_id =" + idDeCourse;
+            MaConnectionSql.Cmd.CommandText = stringSql2;
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            while (MaConnectionSql.MonLecteur.Read())
+            {
+                // recuperation de valeurs
+                int partiCheval = (int)MaConnectionSql.MonLecteur["ch_id"];
+                int partiCourse = (int)MaConnectionSql.MonLecteur["crs_id"];
+                int partiJockey = (int)MaConnectionSql.MonLecteur["joc_id"];
+                int partiClass = (int)MaConnectionSql.MonLecteur["classement"];
+
+                Participe uneParti = new Participe(partiCheval, partiCourse, partiJockey, partiClass);
+                listParticipe.Add(uneParti);
+            }
+            MaConnectionSql.MonLecteur.Close();
+            MaConnectionSql.CloseConnection();
+            return listParticipe;
+        }
     }
     }

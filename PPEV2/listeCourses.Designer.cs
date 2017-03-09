@@ -66,6 +66,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.AllocationLabel = new System.Windows.Forms.Label();
+            this.reset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -213,6 +214,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(32, 33);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(597, 203);
             this.dataGridView1.TabIndex = 72;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -428,11 +430,22 @@
             this.AllocationLabel.Size = new System.Drawing.Size(0, 13);
             this.AllocationLabel.TabIndex = 107;
             // 
+            // reset
+            // 
+            this.reset.Location = new System.Drawing.Point(753, 358);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(75, 23);
+            this.reset.TabIndex = 108;
+            this.reset.Text = "Réinitialiser";
+            this.reset.UseVisualStyleBackColor = true;
+            this.reset.Click += new System.EventHandler(this.reset_Click);
+            // 
             // listeCourses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 398);
+            this.Controls.Add(this.reset);
             this.Controls.Add(this.AllocationLabel);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label6);
@@ -505,5 +518,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label AllocationLabel;
+        private System.Windows.Forms.Button reset;
     }
 }

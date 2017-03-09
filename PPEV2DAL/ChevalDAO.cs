@@ -22,6 +22,11 @@ namespace PPEV2DAL
             return unChevalDAO;
         }
 
+
+        /// <summary>
+        /// RETOURNE  LA LISTE DES CHEVAUX DANS LA BDD
+        /// </summary>
+        /// <returns></returns>
         public static List<Cheval> GetChevaux()
         {
             List<Cheval> listChe = new List<Cheval>();
@@ -60,8 +65,11 @@ namespace PPEV2DAL
             // auccune erreur, wow.
         }
 
-        // Cette méthode insert un nouvel proprietaire passé en paramètre dans la BD
-        // A VERIFIER ABSOLUMENT (SQL)
+        /// <summary>
+        /// Cette méthode insert un nouveau cheval passé en paramètre dans la BDD
+        /// </summary>
+        /// <param name="unCheval"></param>
+        /// <returns></returns>
         public static int AjoutCheval(Cheval unCheval)
         {
             int nbEnr;
@@ -78,7 +86,11 @@ namespace PPEV2DAL
             return nbEnr;
         }
 
-        // UPDATE 
+        /// <summary>
+        /// Cette méthode met à jour un nouveau cheval passé en paramètre dans la BDD
+        /// </summary>
+        /// <param name="unCheval"></param>
+        /// <returns></returns>
         public static int UpdateCheval(Cheval unCheval)
         {
             int nbEnr;
@@ -92,7 +104,12 @@ namespace PPEV2DAL
             MaConnectionSql.CloseConnection();
             return nbEnr;
         }
-        // DELETE
+
+        /// <summary>
+        /// Cette méthode supprime un cheval passé en paramètre dans la BDD
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static int DeleteCheval(int id)
         {
             int nbEnr;
@@ -106,6 +123,12 @@ namespace PPEV2DAL
             MaConnectionSql.CloseConnection();
             return nbEnr;
         }
+
+        /// <summary>
+        /// Cette méthode retourne un cheval en passant son id en paramètre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Cheval GetUnCheval(int id)
         {
             Cheval unCheval = null;
@@ -138,6 +161,12 @@ namespace PPEV2DAL
 
             return unCheval;
         }
+
+        /// <summary>
+        /// Cette méthode retourne une liste de cheval assigné à une course en passant l'id de la course en paramètre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static List<Cheval> GetLesChevauxDuneCourse(int id)
         {
             List<Participe> listPart = new List<Participe>();
@@ -171,6 +200,34 @@ namespace PPEV2DAL
             MaConnectionSql.CloseConnection();
             return listChe;
             // auccune erreur, wow.
+        }
+
+        public static List<Participe> GetCourseDuCheval(int idCheval)
+        {
+            List<Participe> listParticipe = new List<Participe>();
+            ConnexionDb MaConnectionSql = new ConnexionDb();
+            MaConnectionSql.InitializeConnection();
+            MaConnectionSql.OpenConnection();
+
+            string stringSql2 = "select * from participe WHERE ch_id =" + idCheval;
+            MaConnectionSql.Cmd.CommandText = stringSql2;
+            MaConnectionSql.MonLecteur = MaConnectionSql.Cmd.ExecuteReader();
+            while (MaConnectionSql.MonLecteur.Read())
+            {
+                // recuperation de valeurs
+                int partiCheval = (int)MaConnectionSql.MonLecteur["ch_id"];
+                int partiCourse = (int)MaConnectionSql.MonLecteur["crs_id"];
+                int partiJockey = (int)MaConnectionSql.MonLecteur["joc_id"];
+                int partiClass = (int)MaConnectionSql.MonLecteur["classement"];
+
+                Participe uneParti = new Participe(partiCheval, partiCourse, partiJockey, partiClass);
+                listParticipe.Add(uneParti);
+            }
+            MaConnectionSql.MonLecteur.Close();
+            MaConnectionSql.CloseConnection();
+            return listParticipe;
+
+
         }
         
     }

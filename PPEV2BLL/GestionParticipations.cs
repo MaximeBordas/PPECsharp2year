@@ -47,5 +47,9 @@ namespace PPEV2BLL
         {
             return ParticipeDAO.GetResultatDerniereCourse(idCourse);
         }
+        public static List<Participe> GetListeDuClassement(int idCourse)
+        {
+            return ParticipeDAO.GetListeDuClassement(idCourse);
+        }
     }
 }

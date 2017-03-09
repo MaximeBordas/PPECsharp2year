@@ -23,7 +23,8 @@ namespace PPEV2
             DataTable table = GestionParticipations.GetDerniereCourse(2);
             bSource.DataSource = table;
             dataGridView1.DataSource = bSource;
-
+            // empecher la modification du datagridview
+            dataGridView1.ReadOnly = true;
 
 
 
@@ -71,7 +72,7 @@ namespace PPEV2
 
         private void buttonMenuQuit6_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }

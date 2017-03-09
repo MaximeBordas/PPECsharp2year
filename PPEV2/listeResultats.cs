@@ -18,11 +18,21 @@ namespace PPEV2
             InitializeComponent();
             List<PPEV2BO.Hippodrome> listeHippodrome = new List<PPEV2BO.Hippodrome>();
             listeHippodrome = GestionHippodrome.GetHippodrome();
+            comboBoxHipp.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxch1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxch2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxch3.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxch4.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxch5.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCou.DropDownStyle = ComboBoxStyle.DropDownList;
             foreach (PPEV2BO.Hippodrome Hip in listeHippodrome)
             {
                 comboBoxHipp.Items.Add(Hip.Nom);
                 comboBoxHipp.MaxDropDownItems = listeHippodrome.Count();
+                
             }
+            // empecher la modification du datagridview
+            dataGridViewResultat.ReadOnly = true;
         }
 
         private void comboBoxHipp_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,6 +98,35 @@ namespace PPEV2
             this.dataGridViewResultat.Columns[0].Visible = false;
             this.dataGridViewResultat.Columns[8].Visible = false;
             this.dataGridViewResultat.Columns[9].Visible = false;
+
+            List<PPEV2BO.Participe> uneListeParticipation = new List<PPEV2BO.Participe>();
+            uneListeParticipation = GestionParticipations.GetListeDuClassement(crs);
+
+            foreach (PPEV2BO.Participe Participant in uneListeParticipation)
+            {
+                if (Participant.Clas == 1)
+                {
+                    comboBoxch1.SelectedIndex = comboBoxch1.FindStringExact(GestionChevaux.GetUnChevaux(Participant.Cheval).Nom);
+                }
+                else if (Participant.Clas == 2)
+                {
+                    comboBoxch2.SelectedIndex = comboBoxch2.FindStringExact(GestionChevaux.GetUnChevaux(Participant.Cheval).Nom);
+                }
+                else if (Participant.Clas == 3)
+                {
+                    comboBoxch3.SelectedIndex = comboBoxch3.FindStringExact(GestionChevaux.GetUnChevaux(Participant.Cheval).Nom);
+                }
+                else if (Participant.Clas == 4)
+                {
+                    comboBoxch4.SelectedIndex = comboBoxch4.FindStringExact(GestionChevaux.GetUnChevaux(Participant.Cheval).Nom);
+                }
+                else if (Participant.Clas == 5)
+                {
+                    comboBoxch5.SelectedIndex = comboBoxch5.FindStringExact(GestionChevaux.GetUnChevaux(Participant.Cheval).Nom);
+                }
+            }
+
+
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)

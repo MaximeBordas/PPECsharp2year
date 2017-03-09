@@ -47,6 +47,10 @@ namespace PPEV2BLL
         {
             return ChevalDAO.GetLesChevauxDuneCourse(id);
         }
+        public static List<Participe> GetCourseDunCheval(int IdDuCheval)
+        {
+            return ChevalDAO.GetCourseDuCheval(IdDuCheval);
+        }
 
     }
 }
